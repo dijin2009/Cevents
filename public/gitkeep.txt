@@ -1,0 +1,2 @@
+# This directory is for static assets like videos and images.
+# Files here are served at the root path (e.g., /hero-video.mp4).
