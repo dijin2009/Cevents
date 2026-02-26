@@ -16,7 +16,7 @@ const serviceData: Record<string, any> = {
     title: "Corporate Events",
     subtitle: "Strategic Excellence & Professional Grandeur",
     icon: Building2,
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2012",
+    image: "SGM.jpg?auto=format&fit=crop&q=80&w=2012",
     description: "We specialize in high-stakes corporate gatherings that align with your brand's strategic objectives. From annual summits to product launches, our team ensures every detail reflects your company's prestige and professionalism.",
     features: [
       "Strategic Event Design",
