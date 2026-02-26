@@ -76,7 +76,7 @@ const serviceData: Record<string, any> = {
     title: "Concerts & Productions",
     subtitle: "World-Class Entertainment & Technical Mastery",
     icon: Mic2,
-    image: "hero-poster.jpg?auto=format&fit=crop&q=80&w=2070",
+    image: "DSC05081.jpg?auto=format&fit=crop&q=80&w=2070",
     description: "From stadium concerts to theatrical productions, we provide the technical expertise and creative vision to deliver world-class entertainment experiences.",
     features: [
       "Stage & Set Design",
