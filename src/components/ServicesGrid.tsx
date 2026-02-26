@@ -52,7 +52,7 @@ const services: Service[] = [
     slug: "concerts-productions",
     description: "Full-scale technical management and production for world-class entertainment.",
     icon: Mic2,
-    image: "https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=2070"
+    image: "hero-poster.jpg?auto=format&fit=crop&q=80&w=2070"
   },
   {
     title: "Brand Activations",
