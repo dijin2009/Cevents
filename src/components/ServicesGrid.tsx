@@ -1,5 +1,6 @@
 import React, { ElementType } from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { 
   Building2, 
   Heart, 
@@ -11,6 +12,7 @@ import {
 
 interface Service {
   title: string;
+  slug: string;
   description: string;
   icon: ElementType;
   image: string;
@@ -19,36 +21,42 @@ interface Service {
 const services: Service[] = [
   {
     title: "Corporate Events",
+    slug: "corporate-events",
     description: "Elevate your brand with sophisticated corporate gatherings that leave a lasting impression.",
     icon: Building2,
     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2012"
   },
   {
     title: "Weddings",
+    slug: "weddings",
     description: "Bespoke desert weddings and luxury ballroom celebrations tailored to your unique love story.",
     icon: Heart,
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2070"
   },
   {
     title: "Private Parties",
+    slug: "private-parties",
     description: "Exclusive celebrations designed with intimacy and grandeur in mind.",
     icon: GlassWater,
     image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2070"
   },
   {
     title: "Cultural Events",
+    slug: "cultural-events",
     description: "Honoring Abu Dhabi's rich heritage through meticulously curated cultural experiences.",
     icon: Palmtree,
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2070"
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=2070"
   },
   {
     title: "Concerts & Productions",
+    slug: "concerts-productions",
     description: "Full-scale technical management and production for world-class entertainment.",
     icon: Mic2,
-    image: "https://images.unsplash.com/photo-1510511233900-1982d92bd835?auto=format&fit=crop&q=80&w=2070"
+    image: "https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=2070"
   },
   {
     title: "Brand Activations",
+    slug: "brand-activations",
     description: "Immersive experiences that connect your brand with your audience in meaningful ways.",
     icon: Zap,
     image: "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=2070"
@@ -68,7 +76,7 @@ export const ServicesGrid = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index} />
+            <ServiceCard key={service.slug} service={service} index={index} />
           ))}
         </div>
       </div>
@@ -76,49 +84,51 @@ export const ServicesGrid = () => {
   );
 };
 
-function ServiceCard({ service, index }: { service: Service; index: number; key?: string | number }) {
+function ServiceCard({ service, index }: { service: Service; index: number; key?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-      className="group relative h-[450px] rounded-2xl overflow-hidden glass-card cursor-pointer"
-    >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 h-full p-8 flex flex-col justify-end">
-        <div className="mb-4 w-12 h-12 flex items-center justify-center rounded-xl bg-desert-gold/20 backdrop-blur-md border border-desert-gold/30 text-desert-gold group-hover:bg-desert-gold group-hover:text-luxury-black transition-all duration-500">
-          <service.icon size={24} />
+    <Link to={`/services/${service.slug}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        whileHover={{ y: -10 }}
+        className="group relative h-[450px] rounded-2xl overflow-hidden glass-card cursor-pointer"
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
         </div>
-        
-        <h3 className="text-2xl font-serif mb-2 group-hover:text-desert-gold transition-colors">
-          {service.title}
-        </h3>
-        
-        <div className="overflow-hidden h-0 group-hover:h-24 transition-all duration-500 ease-in-out">
-          <p className="text-white/70 font-light text-sm leading-relaxed">
-            {service.description}
-          </p>
-          <button className="mt-4 text-xs uppercase tracking-widest font-bold text-desert-gold flex items-center gap-2">
-            Learn More <span className="text-lg">→</span>
-          </button>
-        </div>
-      </div>
 
-      {/* Gold Edge Highlight */}
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-desert-gold/30 rounded-2xl transition-all duration-500 pointer-events-none" />
-    </motion.div>
+        {/* Content */}
+        <div className="relative z-10 h-full p-8 flex flex-col justify-end">
+          <div className="mb-4 w-12 h-12 flex items-center justify-center rounded-xl bg-desert-gold/20 backdrop-blur-md border border-desert-gold/30 text-desert-gold group-hover:bg-desert-gold group-hover:text-luxury-black transition-all duration-500">
+            <service.icon size={24} />
+          </div>
+          
+          <h3 className="text-2xl font-serif mb-2 group-hover:text-desert-gold transition-colors">
+            {service.title}
+          </h3>
+          
+          <div className="overflow-hidden h-0 group-hover:h-24 transition-all duration-500 ease-in-out">
+            <p className="text-white/70 font-light text-sm leading-relaxed">
+              {service.description}
+            </p>
+            <div className="mt-4 text-xs uppercase tracking-widest font-bold text-desert-gold flex items-center gap-2">
+              Learn More <span className="text-lg">→</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Gold Edge Highlight */}
+        <div className="absolute inset-0 border-2 border-transparent group-hover:border-desert-gold/30 rounded-2xl transition-all duration-500 pointer-events-none" />
+      </motion.div>
+    </Link>
   );
 };
